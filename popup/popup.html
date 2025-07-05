@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VFS Checker</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="app">
+    <h1>VFS Appointment Checker</h1>
+
+    <!-- Credentials Inputs -->
+    <label for="user-email">Email</label>
+    <input id="user-email" type="email" placeholder="you@domain.com">
+
+    <label for="user-pass">Password</label>
+    <input id="user-pass" type="password" placeholder="••••••••">
+
+    <!-- Controls -->
+    <button id="toggle-btn">Start Checking</button>
+    <div id="status">Status: Idle</div>
+    <button id="test-sound-btn">🔔 Test Alert</button>
+  </div>
+
+  <audio id="alert-sound" src="../icons/alert.mp3" preload="auto"></audio>
+  <script src="popup.js"></script>
+</body>
+</html>

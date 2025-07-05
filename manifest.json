@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "VFS Appointment Checker",
+  "version": "1.0.0",
+  "description": "Checks VFS tourist slots and plays alert.",
+  "permissions": [
+    "scripting",
+    "tabs",
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://visa.vfsglobal.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://visa.vfsglobal.com/*"],
+      "js": ["content/content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background/bg.js"
+  },
+  "icons": {
+    "128": "icons/icon128.png"
+  }
+}
