@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VFS Checker</title>
-  <link rel="stylesheet" href="popup.css">
-</head>
-<body>
-  <div id="app">
-    <h1>VFS Appointment Checker</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <title>VFS Global Appointment Checker</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>📅 VFS Appointment Checker</h1>
 
-    <!-- Credentials Inputs -->
-    <label for="user-email">Email</label>
-    <input id="user-email" type="email" placeholder="you@domain.com">
+      <div class="status-box">
+        <p>Status: <span id="status">Idle</span></p>
+        <p>Checked: <span id="check-count">0</span> times</p>
+        <p>Last Check: <span id="last-checked">—</span></p>
+      </div>
 
-    <label for="user-pass">Password</label>
-    <input id="user-pass" type="password" placeholder="••••••••">
+      <div class="controls-grid">
+        <button id="start-btn">Start ⏵</button>
+        <button id="stop-btn">Stop ⏹</button>
+        <button id="pause-btn">Pause ⏸</button>
+        <button id="resume-btn">Resume 🔁</button>
+        
+      </div>
 
-    <!-- Controls -->
-    <button id="toggle-btn">Start Checking</button>
-    <div id="status">Status: Idle</div>
-    <button id="test-sound-btn">🔔 Test Alert</button>
-  </div>
-
-  <audio id="alert-sound" src="../icons/alert.mp3" preload="auto"></audio>
-  <script src="popup.js"></script>
-</body>
+      <div class="sound-controls">
+        <label for="sound-count">Repeat Alert:</label>
+        <input id="sound-count" type="number" min="1" max="10" value="3" />
+        <button id="test-sound-btn">🔔 Test Alert</button>
+        <audio id="alert-sound" src="../icons/alert.mp3"></audio>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
 </html>

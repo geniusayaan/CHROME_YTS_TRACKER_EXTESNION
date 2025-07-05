@@ -1,35 +1,36 @@
+// content/content.js
+
+// Listen for messages from the background script
 chrome.runtime.onMessage.addListener((msg) => {
   if (msg.action === 'checkSlots') {
-    checkAppointmentSlots();
+    checkForSlot();
   }
 });
 
-function checkAppointmentSlots() {
-  const usernameInput = document.querySelector('#Username');
-  const passwordInput = document.querySelector('#Password');
-  const loginButton = document.querySelector('button[type="submit"]');
+// This function checks if a slot is available
+function checkForSlot() {
+  // Modify this selector based on the actual DOM structure after login
+  const slotElement = document.querySelector('.slots-available, .calendar-slot, .inventory_list');
 
-  if (usernameInput && passwordInput && loginButton) {
-    usernameInput.value = 'afhgfhgly66416@gmail.com';
-    passwordInput.value = 'Shakir@123';
-    loginButton.click();
-    return;
+  if (slotElement) {
+    console.log('[VFS Checker] Slot detected!');
+
+    // Notify background/popup
+    chrome.runtime.sendMessage({ slotFound: true });
+
+    // Get repeat count from storage
+    chrome.storage.local.get(['soundRepeat'], ({ soundRepeat }) => {
+      const times = parseInt(soundRepeat || 3);
+      const sound = new Audio(chrome.runtime.getURL('../icons/alert.mp3'));
+
+      let played = 0;
+      const interval = setInterval(() => {
+        sound.play();
+        played++;
+        if (played >= times) clearInterval(interval);
+      }, 1200); // play every 1.2s
+    });
+  } else {
+    console.log('[VFS Checker] No slot found this time.');
   }
-
-  const appointmentLink = document.querySelector('a[href*="/appointment"]');
-  if (appointmentLink) {
-    appointmentLink.click();
-    return;
-  }
-
-  const noSlotsNotice = document.querySelector('.no-availability-message');
-  if (!noSlotsNotice) {
-    chrome.runtime.sendMessage({ status: 'SlotFound' });
-    playSoundAlert();
-  }
-}
-
-function playSoundAlert() {
-  const audio = new Audio(chrome.runtime.getURL('../icons/alert.mp3'));
-  audio.play();
 }

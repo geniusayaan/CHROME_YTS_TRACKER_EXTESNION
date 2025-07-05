@@ -1,13 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "VFS Appointment Checker",
+  "name": "VFS Rain Checker",
   "version": "1.0.0",
-  "description": "Checks VFS tourist slots and plays alert.",
+  "description": "A beautiful extension that tracks VFS appointment rain in the background.",
   "permissions": [
-    "scripting",
-    "tabs",
     "storage",
-    "activeTab"
+    "tabs",
+    "scripting"
   ],
   "host_permissions": [
     "https://visa.vfsglobal.com/*"
@@ -16,15 +15,15 @@
     "default_popup": "popup/popup.html",
     "default_icon": "icons/icon128.png"
   },
+  "background": {
+    "service_worker": "background/bg.js"
+  },
   "content_scripts": [
     {
       "matches": ["https://visa.vfsglobal.com/*"],
       "js": ["content/content.js"]
     }
   ],
-  "background": {
-    "service_worker": "background/bg.js"
-  },
   "icons": {
     "128": "icons/icon128.png"
   }
