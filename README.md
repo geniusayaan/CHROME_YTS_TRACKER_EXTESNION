@@ -1,103 +1,111 @@
-🌐 VFS Global Appointment Checker 🔔
+<h1 align="center">🌐 VFS Global Appointment Checker 🔔</h1>
 
-An elegant, auto-alert Chrome extension that continuously monitors visa.vfsglobal.com for available appointment slots — and notifies you instantly with sound & notification.
+<p align="center">
+  <strong>An elegant, auto-alert Chrome extension that monitors <a href="https://visa.vfsglobal.com" target="_blank">visa.vfsglobal.com</a> for appointment slots — and notifies you instantly.</strong><br>
+  🎯 Designed for busy applicants, built for peace of mind.
+</p>
 
-🎯 Designed for busy applicants, built for peace of mind.
+---
 
-✨ Features
-🧠 Intelligent Background Monitoring — checks every few minutes, even if you're doing other tasks.
+## ✨ Features
 
-🔊 Loud & Clear Alerts — plays a custom sound when slots are detected.
+- 🧠 **Intelligent Background Monitoring** — checks every few minutes, even if you're busy elsewhere.
+- 🔊 **Loud & Clear Alerts** — plays a custom sound when slots are detected.
+- 🔔 **Browser Notifications** — so you never miss an opportunity.
+- ⏱ **Custom Check Interval** — choose how often to check.
+- ▶️ **Start / ⏸ Pause / ⏹ Stop / 🔁 Resume** — full control at your fingertips.
+- 🧪 **“Test Alert” Button** — preview sound & notification instantly.
+- 📈 **Stats Display** — number of checks and last checked time.
+- 🎨 **Stylish UI** — music-player-inspired popup: modern, clean, responsive.
+- 💾 **Auto-saves Preferences** — your settings persist between sessions.
 
-🔔 Browser Notifications — so you never miss an opportunity.
+---
 
-⏱ Custom Check Interval — choose how often you want it to check.
+## 🧩 File Structure
 
-▶️ Start / ⏸ Pause / ⏹ Stop / 🔁 Resume options.
-
-🧪 “Test Alert” Button — preview sound & notifications instantly.
-
-📈 Stats — shows how many times it checked, and last check time.
-
-🎨 Stylish UI — a music-player-like popup, modern, clean, and smooth.
-
-💾 Auto-saves preferences — your interval and settings persist between sessions.
-
-
-
-🧩 File Structure
 my-vfs-extension/
 ├── background/
-│   └── bg.js             # Background service worker logic
+│ └── bg.js # Background service worker logic
 ├── content/
-│   └── content.js        # Injected into VFS site to detect slots
+│ └── content.js # Injected into VFS site to detect slots
 ├── popup/
-│   ├── popup.html        # Extension popup UI
-│   └── popup.js          # Popup behavior and controls
+│ ├── popup.html # Extension popup UI
+│ └── popup.js # Popup behavior and controls
 ├── icons/
-│   ├── icon128.png       # Extension icon
-│   └── alert.mp3         # Sound file for alert
-├── manifest.json         # Chrome extension configuration
-└── README.md             # This file
+│ ├── icon128.png # Extension icon
+│ └── alert.mp3 # Sound file for alert
+├── manifest.json # Chrome extension configuration
+└── README.md # This file
 
 
-🚀 How to Install (In 20 Seconds)
-Clone or download this folder
 
-Open Chrome and go to chrome://extensions
 
-Turn on Developer Mode (top right)
 
-Click Load unpacked
+---
 
-Select the my-vfs-extension folder
+## 🚀 How to Install (20 seconds)
 
-Pin the extension icon (optional)
+1. 📁 Clone or download this folder  
+2. 🧩 Open Chrome and go to `chrome://extensions`  
+3. ⚙️ Turn on **Developer Mode** (top right)  
+4. 📂 Click **Load unpacked**  
+5. ✅ Select the `my-vfs-extension` folder  
+6. 📌 Pin the extension icon (optional)  
+7. 🎉 You're ready to go!
 
-Done! 🎉
+---
 
-📸 UI Preview
+## 📸 UI Preview
+
 Lightweight & Responsive 🎧
 
-<img src="https://via.placeholder.com/320x240?text=VFS+Checker+Popup+UI" alt="Popup UI" width="300"/>
-🛠 How It Works
-You log in manually to https://visa.vfsglobal.com.
+<img src="https://via.placeholder.com/320x240?text=VFS+Checker+Popup+UI" alt="VFS Checker Popup UI" width="300"/>
 
-Click ▶ Start in the extension popup.
+---
 
-It checks in the background based on your chosen interval.
+## 🛠 How It Works
 
-When a slot is found:
+1. **You manually log in** to [visa.vfsglobal.com](https://visa.vfsglobal.com)  
+2. Click ▶️ **Start** in the extension popup  
+3. It runs in the background at your chosen interval  
+4. When a slot is found:
+   - 🛎 Plays a sound
+   - 🔔 Shows a notification
+   - ⛔ Automatically stops checking so you can book ASAP
 
-🛎 It plays a sound
+💡 Press **Test Alert** anytime to preview alerts.
 
-🔔 It shows a browser notification
+---
 
-🎉 It stops the search so you can book immediately!
+## 📚 Developer Notes
 
-You can also press the Test Alert button to preview the notification + sound.
+- **Manifest Version**: 3  
+- ✅ No third-party libraries  
+- ⚙️ Built with **vanilla JS**, **HTML**, and **CSS**  
+- 💤 Battery-friendly: Service worker sleeps when idle
 
-📚 Developer Notes
-Manifest Version: 3
+---
 
-No third-party libraries used.
+## ⚠️ Troubleshooting
 
-Built using vanilla JS + HTML + CSS.
+| Problem                            | Solution                                                                 |
+|-----------------------------------|--------------------------------------------------------------------------|
+| "Receiving end does not exist"    | Reload the VFS tab — content script must be active                       |
+| 🔇 Sound doesn’t play             | Click **Test Alert** once to grant audio permission                      |
+| 🔕 No notification shown          | Go to Chrome → Site Settings → Notifications → Allow                     |
+| 💤 Extension shows "Inactive"     | Normal behavior — service workers sleep until triggered                  |
 
-Service worker stays asleep until needed — battery & memory friendly.
+---
 
-⚠️ Troubleshooting
-Problem	Fix
-"Receiving end does not exist"	Reload the VFS tab; content script must be active.
-Sound doesn’t play	Press "Test Alert" once to grant audio permission.
-No notification shown	Check Chrome → Site Settings → Notifications.
-Extension says "Inactive"	That’s okay — Chrome sleeps service workers until triggered.
+## 🔮 Future Ideas
 
-🔮 Ideas for Future
-Auto login using stored credentials (optional)
+- 🔐 Auto login with stored credentials (optional)
+- 🌍 Multi-country / multi-city monitoring
+- 📤 Export slot logs to CSV or Google Sheets
+- 🌓 Light/Dark Color Themes
 
-Multi-country and multi-city slot monitoring
+---
 
-Export slot logs to CSV or Google Sheets
+## 🧠 Made for peace of mind.  
+Never miss a visa slot again.
 
-Color themes (light/dark)
